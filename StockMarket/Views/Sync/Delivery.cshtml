@@ -1,0 +1,37 @@
+@model IEnumerable<dynamic>
+@{
+    ViewData["Title"] = "Delivery Data";
+}
+
+<div class="container">
+    <h2>Delivery Data Status</h2>
+
+    <table class="table table-bordered table-sm table-striped">
+        <thead>
+            <tr>
+                @if (Model != null && Model.Any())
+                {
+                    var first = (IDictionary<string, object>)Model.First();
+                    foreach (var h in first.Keys)
+                    {
+                        <th>@h</th>
+                    }
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+                {
+                    @foreach (IDictionary<string, object> row in Model)
+                    {
+                        <tr>
+                            @foreach (var kv in row)
+                            {
+                                <td>@kv.Value</td>
+                            }
+                        </tr>
+                    }
+                }
+        </tbody>
+    </table>
+</div>

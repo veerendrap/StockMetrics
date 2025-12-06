@@ -1,0 +1,14 @@
+@{
+    ViewData["Title"] = "Sync Home";
+}
+
+<div class="container">
+    <h2>StockMarket Sync Portal</h2>
+    <p>Choose a module:</p>
+    <ul>
+        <li><a asp-controller="Sync" asp-action="BhavCopy">Bhav Copy</a></li>
+        <li><a asp-controller="Sync" asp-action="Delivery">Delivery Data</a></li>
+        <li><a asp-controller="Sync" asp-action="NseOI">NSE OI</a></li>
+        <li><a asp-controller="Sync" asp-action="DownloadCompleteData">Download Complete Data (CSV)</a></li>
+    </ul>
+</div>

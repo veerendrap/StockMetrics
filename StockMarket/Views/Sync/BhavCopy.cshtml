@@ -1,0 +1,40 @@
+@model IEnumerable<dynamic>
+@{
+    ViewData["Title"] = "Bhav Copy";
+}
+
+<div class="container">
+    <h2>Bhav Copy Status</h2>
+    <p>
+        <a class="btn btn-primary" href="@Url.Action("DownloadCompleteData", "Sync")">Download Complete CSV (default)</a>
+    </p>
+
+    <table class="table table-bordered table-sm table-striped">
+        <thead>
+            <tr>
+                @if (Model != null && Model.Any())
+                {
+                    var first = (IDictionary<string, object>)Model.First();
+                    foreach (var h in first.Keys)
+                    {
+                        <th>@h</th>
+                    }
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                @foreach (IDictionary<string, object> row in Model)
+                {
+                    <tr>
+                        @foreach (var kv in row)
+                        {
+                            <td>@kv.Value</td>
+                        }
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
