@@ -1,0 +1,108 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center">
+    <figure class="highcharts-figure">
+        <div id="container"></div>
+        <p class="highcharts-description"></p>
+    </figure>
+</div>
+
+@section Scripts{
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script>
+        $(function () {
+            GetAdvanceDeclineData();
+        })
+
+        function GetAdvanceDeclineData() {
+            $.post({
+                url: '@Url.Action("GetAdvanceDeclineRatio")',
+                success: function (result) {
+                    ShowAdvanceDeclineChart(result);
+                }
+            });
+        }
+
+        function ShowAdvanceDeclineChart(result) {
+            console.log("result=", result, result.advancedCount);
+            Highcharts.chart('container', {
+                chart: {
+                    type: 'bar',
+                    height: '100%',
+                },
+                options: {
+                    maintainAspectRatio: false,
+                },
+                title: {
+                    text: 'Sector Advance/Decline Count',
+                    align: 'center'
+                },
+                subtitle: {
+                    text: '', //'Source: <a href="" target="_blank"></a>',
+                    align: 'left'
+                },
+                xAxis: {
+                    categories: result.categories, //['Africa', 'America', 'Asia', 'Europe'],
+                    title: { text: 'Sector Name' },
+                    gridLineWidth: 1,
+                    lineWidth: 0
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '[Count-->]',
+                        align: 'high'
+                    },
+                    labels: { overflow: 'justify' },
+                    gridLineWidth: 0
+                },
+                tooltip: {
+                    valueSuffix: ''
+                },
+                plotOptions: {
+                    bar: {
+                        borderRadius: '50%',
+                        dataLabels: {
+                            enabled: true
+                        },
+                        groupPadding: 0.1,
+                        colorByPoint: false,
+                        colors: ["#00ff21", "#ff6a00", "#a0cfd4", "#fe6a35", "#6b8abc", "#d568fb", "#2ee0ca", "#fa4b42", "#feb56a", "#91e8e12"],
+                    }//,
+                    //series: {
+                    //    colorByPoint: true
+                    //}
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'top',
+                    x: -40,
+                    y: 80,
+                    floating: true,
+                    borderWidth: 1,
+                    backgroundColor:
+                        Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+                    shadow: true
+                },
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'Advanced',
+                    data: result.advancedCount //[631, 727, 3202, 721]
+                }, {
+                    name: 'Decline',
+                    data: result.declinedCount //[814, 841, 3714, 726]
+                }, {
+                    name: 'No Change',
+                    data: result.noChangeCount //[10, 50, 30, 40]
+                }]
+            });
+        }
+
+
+    </script>
+}

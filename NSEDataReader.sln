@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSEDataReader", "NSEDataReader\NSEDataReader.csproj", "{54BADACF-1D2B-4062-88C6-D2E511B7AE84}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSEDAL", "NSEDAL\NSEDAL.csproj", "{E5672D23-ABA2-4068-AB0A-8448AD2C34E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSEWebApp", "NSEWebApp\NSEWebApp.csproj", "{BE534DEA-C6E6-48F0-8D27-BD02661477CF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{54BADACF-1D2B-4062-88C6-D2E511B7AE84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54BADACF-1D2B-4062-88C6-D2E511B7AE84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54BADACF-1D2B-4062-88C6-D2E511B7AE84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54BADACF-1D2B-4062-88C6-D2E511B7AE84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5672D23-ABA2-4068-AB0A-8448AD2C34E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5672D23-ABA2-4068-AB0A-8448AD2C34E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5672D23-ABA2-4068-AB0A-8448AD2C34E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5672D23-ABA2-4068-AB0A-8448AD2C34E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE534DEA-C6E6-48F0-8D27-BD02661477CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE534DEA-C6E6-48F0-8D27-BD02661477CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE534DEA-C6E6-48F0-8D27-BD02661477CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE534DEA-C6E6-48F0-8D27-BD02661477CF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4FC03779-3A04-435C-BC33-018BAC5A9F22}
+	EndGlobalSection
+EndGlobal

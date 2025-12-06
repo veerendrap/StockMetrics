@@ -1,0 +1,82 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center">
+    <figure class="highcharts-figure">
+        <div id="container"></div>
+        <p class="highcharts-description">
+            Chart showing overlapping placement of columns, using different data
+            series. The chart is also using multiple y-axes, allowing data in
+            different ranges to be visualized on the same chart.
+        </p>
+    </figure>
+</div>
+
+@section Scripts{
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script>
+        $(function () {
+            Highcharts.chart('container', {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Advanced v/s Declined'
+                },
+                xAxis: {
+                    categories: [
+                        'A',
+                        'B',
+                        'C'
+                    ]
+                },
+                yAxis: [{
+                    min: 0,
+                    title: {
+                        text: 'Count'
+                    }
+                }, {
+                    title: {
+                        text: 'Count'
+                    },
+                    opposite: true
+                }],
+                legend: {
+                    shadow: false
+                },
+                tooltip: {
+                    shared: true
+                },
+                plotOptions: {
+                    column: {
+                        grouping: false,
+                        shadow: false,
+                        borderWidth: 0
+                    }
+                },
+                series: [{
+                    name: 'Advance',
+                    color: 'rgba(124,252,0,1)',
+                    data: [150, 73, 20, 10, 5,7,8,9,0,10],
+                    pointPadding: 0.1,
+                    pointPlacement: -0.1
+                }, {
+                    name: 'Decline',
+                    color: 'rgba(252, 78, 22,.9)',
+                    data: [140, 90, 40, 5],
+                    pointPadding: 0.2,
+                    pointPlacement: -0.1
+                }, {
+                    name: 'NoChange',
+                    color: 'rgba(191, 201, 202,1)',
+                    data: [183.6, 178.8, 198.5],
+                    tooltip: { valuePrefix: '', valueSuffix: '' },
+                    pointPadding: 0.3,
+                    pointPlacement: -0.1,
+                    yAxis: 1
+                }]
+            });
+        })
+    </script>
+}

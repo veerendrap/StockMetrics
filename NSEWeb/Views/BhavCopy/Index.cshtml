@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "BhavCopy";
+}
+<table id="tableBhavCopy" data-toggle="table" data-height="460" data-click-to-select="true"
+       data-url='@Url.Action("get")'>
+    <thead class="bg-green">
+        <tr>
+            <th data-checkbox="true"></th>
+            <th data-field="d">Day</th>
+            @* <th data-field="syncDate">Date</th>*@
+            <th data-field="syncDateFormatted">Date</th>
+            <th data-field="statusName" data-formatter="statusFormatter">Status</th>
+            @* <th data-field="syncFileName">SyncFileName</th>*@
+            <th data-field="syncURL" data-formatter="syncUrlFormatter">URL</th>
+
+        </tr>
+    </thead>
+</table>
+@section Scripts {
+    <script>
+        @*
+        $(function () {
+        $('#tableBhavCopy').bootstrapTable('refresh')
+        })
+        *@
+            function statusFormatter(value, row) {
+                if (value == "Synced")
+                    return '<span class="alert-success">' + value + '</span>';
+                else
+                    return '<a class="btn btn-warning btn-sm" onclick="syncNow(\'' + row.syncDate + '\', \'' + row.syncURL + '\')">Sync Now</a>';
+            }
+
+        function syncUrlFormatter(value) {
+            return '<a href="' + value + '">' + value + '</a>'
+        }
+
+        function syncNow(syncDate, syncURL) {
+            $.post({
+                url: '@Url.Action("SyncNow")',
+                data: { model: { syncDate: syncDate, syncURL: syncURL } },
+                success: function (data) {
+                    if (data == '') {
+                        $('#tableBhavCopy').bootstrapTable('refresh');
+                    }
+                    else {
+                        // TODO show error
+                    }
+                }
+            });
+        }
+
+
+    </script>
+    }
+
